@@ -74,17 +74,17 @@ streamlit run app.py
 
 ### 📸 Visão Geral do Painel
 
-![Painel de KPIs e Validação](img\panorama_geral.png)
+![Painel de KPIs e Validação](img/panorama_geral.png)
 
-![A Ilusão do Volume Absoluto vs. A Realidade Proporcional](img\valores_atendimentos_sus.png)
+![A Ilusão do Volume Absoluto vs. A Realidade Proporcional](img/valores_atendimentos_sus.png)
 
-![Onde estão os verdadeiros gargalos proporcionais?](img\gargalos_sus.png)
+![Onde estão os verdadeiros gargalos proporcionais?](img/gargalos_sus.png)
 
-![Distribuição Geográfica e Recomendações Estratégicas](img\mapa_de_calor_sus.png)
+![Distribuição Geográfica e Recomendações Estratégicas](img/mapa_de_calor_sus.png)
 
-![Prova Estatística: O Impacto da Educação na Saúde](img\educacao_x_sus.png)
+![Prova Estatística: O Impacto da Educação na Saúde](img/educacao_x_sus.png)
 
-
+---
 
 ## 🎯 Conclusão Executiva: O Valor do BI na Gestão Pública
 
