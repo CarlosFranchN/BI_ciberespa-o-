@@ -239,9 +239,7 @@ if not df_final.empty:
     st.divider()
     st.markdown("### 🎯 Conclusão Executiva: O Valor do BI na Gestão Pública")
     apresentar_texto("""
-        Este painel demonstra a transição crítica entre o armazenamento passivo de dados e a <strong>Inteligência Acionável</strong>. 
-        <br><br>
-        Fica comprovado que a superlotação do SUS não é um problema estritamente sanitário, mas sim o reflexo de vulnerabilidades socioeducacionais e demográficas. Ao cruzar os atendimentos de saúde com o IDEB e as taxas de escolarização, o projeto valida a tese de que políticas preventivas e investimento em educação básica reduzem matematicamente a pressão sobre a malha hospitalar de urgência.
-        <br><br>
-        Em suma, o Business Intelligence aplicado ao setor público permite substituir o planeamento baseado em volume absoluto por uma <strong>Gestão Data-Driven</strong>, capaz de direcionar recursos com precisão cirúrgica para os clusters geográficos de maior necessidade.
-    """)
+                     O nosso modelo estatístico, através do Teste de Pearson, retornou valores negativos.
+                     Embora a saúde pública seja influenciada por múltiplos fatores, a matemática indica a tendência clara:
+                     os municípios que formam o grupo de melhor educação são os que menos pressionam a rede de urgência.
+                     """)
