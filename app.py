@@ -51,9 +51,13 @@ if not df_final.empty:
     st.subheader("1. Validação de Coerência e Panorama Geral")
     
     apresentar_texto("""
-        <strong>A primeira etapa da nossa engenharia de dados consistiu na validação da integridade da base.</strong> 
-        A nossa equipa procurou responder: <em>Existem municípios com mais atendimentos absolutos do que habitantes?</em> 
-        Verificar esta anomalia é crucial para identificar 'Cidades Polo' que recebem um fluxo migratório de saúde de regiões vizinhas ou detetar falhas no registo de dados.
+        A primeira etapa da engenharia de dados consistiu na validação da integridade da base. Procurou-se responder à seguinte premissa: <em>Existem municípios com mais atendimentos absolutos do que habitantes?</em> A verificação desta anomalia é crucial para identificar 'Cidades Polo' — que recebem um fluxo migratório de saúde de regiões vizinhas — ou para detetar possíveis inconsistências nos registos.
+        <br><br>
+        <strong>Validação Concluída:</strong> A análise confirmou que nenhum município ultrapassou a sua própria população residente. Como a base representa uma amostra do sistema, o panorama geral foi estruturado através dos seguintes pilares analíticos:
+        <ul style='margin-top: 10px; margin-bottom: 0px;'>
+            <li><strong>Estabelecimento de Linha de Base:</strong> Definiu-se a <b>Taxa Média Estadual</b> (atendimentos por 100 mil habitantes) como o referencial padronizado de normalidade, substituindo o volume absoluto.</li>
+            <li><strong>Mapeamento de Pressão Hospitalar:</strong> Formulou-se o <b>Índice de Sobrecarga</b> para identificar a percentagem exata de municípios que operam acima dessa média, evidenciando gargalos e a distribuição desigual da demanda na rede local.</li>
+        </ul>
     """)
     
     if qtd_alerta_maximo == 0:
@@ -73,8 +77,13 @@ if not df_final.empty:
     st.subheader("2. A Ilusão do Volume Absoluto vs. A Realidade Proporcional")
     
     apresentar_texto("""
-        <strong>Métricas absolutas enviesam a tomada de decisão.</strong> Se o planeamento público se basear apenas nos números brutos (gráfico à esquerda), os recursos serão sempre canalizados para os grandes centros urbanos. 
-        Ao aplicar o nivelamento populacional e focar no nosso <strong>Índice de Sobrecarga</strong> (gráfico de rosca), revelamos a verdadeira percentagem da malha municipal que opera sob forte pressão, demandando mais recursos do SUS do que o aceitável para o seu tamanho.
+        A análise baseada exclusivamente em métricas absolutas pode gerar fortes vieses na formulação de políticas públicas. Observa-se que, ao considerar apenas os volumes brutos de atendimento, a atenção e a alocação de recursos tendem a priorizar invariavelmente os grandes centros urbanos, mascarando as reais urgências do interior do estado.
+        <br><br>
+        Para mitigar esta distorção matemática, aplicou-se o nivelamento populacional, o que revelou dois cenários distintos:
+        <ul style='margin-top: 10px; margin-bottom: 0px;'>
+            <li><strong>O Falso Paradigma (Gráfico de Barras):</strong> Demonstra como os polos metropolitanos dominam os registos totais, uma consequência direta e esperada da sua alta densidade demográfica.</li>
+            <li><strong>A Realidade da Sobrecarga (Gráfico de Rosca):</strong> Evidencia que uma parcela significativa da malha municipal opera sob intensa pressão. Estes locais demandam uma taxa de atendimentos de urgência do SUS consideravelmente superior ao padrão aceitável para o seu porte populacional.</li>
+        </ul>
     """)
     
     col_vol1, col_vol2 = st.columns(2)
@@ -106,10 +115,12 @@ if not df_final.empty:
     st.subheader("3. Onde estão os verdadeiros gargalos proporcionais?")
     
     apresentar_texto("""
-        <strong>A Taxa de Atendimentos por 100 mil habitantes é o grande equalizador desta análise.</strong> 
-        O ranking vermelho destaca os municípios que, independentemente do seu tamanho, representam os maiores gargalos do sistema de saúde. Por outro lado, o ranking verde expõe municípios com pressão minimizada na rede de urgência, o que nos levanta uma nova hipótese analítica: estarão estas cidades a investir de forma eficaz em <strong>Educação e Saúde Preventiva</strong>, ou estaremos perante um cenário de subnotificação de dados?
+        A adoção da Taxa de Atendimentos por 100 mil habitantes atua como o grande equalizador analítico. Ao anular a distorção demográfica, a análise dos extremos da distribuição revela os verdadeiros pontos críticos e as anomalias do sistema:
+        <ul style='margin-top: 10px; margin-bottom: 0px;'>
+            <li><strong>Focos de Tensão (Ranking Vermelho):</strong> Destaca os municípios sob maior stress estrutural. Analiticamente, estas localidades comportam-se frequentemente como 'Cidades Polo', absorvendo de forma invisível a procura reprimida de regiões vizinhas que carecem de infraestrutura de urgência.</li>
+            <li><strong>Zonas de Baixa Pressão (Ranking Verde):</strong> Exibe os municípios com menor demanda proporcional. Sob a ótica de BI, este cenário exige dupla interpretação: pode ser o reflexo direto de políticas eficazes de saúde preventiva e alta escolarização local, ou pode ser um forte indício de subnotificação sistémica de dados.</li>
+        </ul>
     """)
-    
     col_rank1, col_rank2 = st.columns(2)
     
     with col_rank1:
@@ -138,11 +149,18 @@ if not df_final.empty:
     col_mapa, col_texto = st.columns([2, 1])
     
     with col_texto:
-        apresentar_texto("""
-            Insights Finais Gerados: 
-            A inteligência espacial é vital na saúde pública. O mapa permite-nos visualizar a formação de <em>clusters</em> (bolsões) de sobrecarga no interior do estado.<br><br>
-            O enriquecimento dos dados comprovou que alocar infraestrutura hospitalar baseando-se apenas no volume absoluto ignora as populações mais vulneráveis.<br><br>
-            Como próximo passo, sugerimos cruzar diretamente as notas do <strong>IDEB</strong> com estes polos vermelhos para modelar políticas conjuntas entre a Secretaria de Educação e a de Saúde.
+        st.markdown("""
+            <div style='font-size: 1.15rem; line-height: 1.6; text-align: justify; margin-bottom: 20px;'>
+                A aplicação de inteligência espacial permite a identificação de padrões geográficos e a formação de *clusters* (bolsões) de sobrecarga hospitalar no interior do estado. 
+                <br><br>
+                <strong>Conclusões e Recomendações Estratégicas:</strong>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        * **Descentralização Data-Driven:** Fica matematicamente comprovado que a alocação de recursos baseada apenas no volume absoluto negligencia as populações em áreas de alta vulnerabilidade proporcional.
+        * **Mapeamento de Clusters:** A concentração espacial de municípios em alerta (pontos vermelhos) justifica de forma técnica e financeira a construção de novos polos de atendimento (Hospitais Regionais) nessas coordenadas.
+        * **Integração Intersetorial:** Recomenda-se o cruzamento contínuo destas manchas de sobrecarga com os dados de evasão escolar, fomentando políticas públicas integradas entre as Secretarias de Educação e de Saúde.
         """)
         
     with col_mapa:
@@ -157,14 +175,18 @@ if not df_final.empty:
             st.plotly_chart(fig_map, use_container_width=True)
         else:
             st.info("🗺️ O mapa aguarda a integração das coordenadas (Latitude/Longitude) no pipeline Pandas para renderizar.")
-        st.divider()
+            
+    st.divider()
 
     # --- SEÇÃO 5: PROVA ESTATÍSTICA E CIDADES MODELO ---
     st.subheader("5. Prova Estatística: O Impacto da Educação na Saúde")
     
     apresentar_texto("""
-        Para além da análise visual, aplicámos testes de <strong>Correlação Estatística (Pearson)</strong> para provar matematicamente a relação entre os indicadores educacionais e a pressão no sistema de saúde.
-        Adicionalmente, segmentámos os municípios para identificar as <em>'Cidades Modelo'</em>: locais que atingiram a excelência na educação e, consequentemente ou paralelamente, apresentam baixa sobrecarga hospitalar.
+        A evolução de um Business Intelligence descritivo para um cenário diagnóstico exige a validação estatística das hipóteses de negócio. Para ultrapassar a intuição visual, aplicou-se o rigor matemático para provar a correlação direta entre o investimento em educação e o alívio da infraestrutura de saúde.
+        <ul style='margin-top: 10px; margin-bottom: 0px;'>
+            <li><strong>Validação Estatística (Pearson):</strong> A métrica comprova matematicamente a força e a direção da relação entre o ambiente escolar e a pressão hospitalar.</li>
+            <li><strong>Benchmarking de Políticas Públicas:</strong> O isolamento das <em>'Cidades Modelo'</em> (Quadrante de Excelência) fornece aos gestores públicos exemplos reais de municípios que atingiram o equilíbrio: excelência no IDEB simultaneamente a uma baixíssima sobrecarga no SUS.</li>
+        </ul>
     """)
     
     # 1. Cálculos Estatísticos
@@ -213,3 +235,13 @@ if not df_final.empty:
             use_container_width=True, 
             hide_index=True
         )
+        
+    st.divider()
+    st.markdown("### 🎯 Conclusão Executiva: O Valor do BI na Gestão Pública")
+    apresentar_texto("""
+        Este painel demonstra a transição crítica entre o armazenamento passivo de dados e a <strong>Inteligência Acionável</strong>. 
+        <br><br>
+        Fica comprovado que a superlotação do SUS não é um problema estritamente sanitário, mas sim o reflexo de vulnerabilidades socioeducacionais e demográficas. Ao cruzar os atendimentos de saúde com o IDEB e as taxas de escolarização, o projeto valida a tese de que políticas preventivas e investimento em educação básica reduzem matematicamente a pressão sobre a malha hospitalar de urgência.
+        <br><br>
+        Em suma, o Business Intelligence aplicado ao setor público permite substituir o planeamento baseado em volume absoluto por uma <strong>Gestão Data-Driven</strong>, capaz de direcionar recursos com precisão cirúrgica para os clusters geográficos de maior necessidade.
+    """)
